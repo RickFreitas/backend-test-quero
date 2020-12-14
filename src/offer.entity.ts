@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Course } from './course.entity';
 
-@Entity({ name: 'offers' })
+@Entity()
 export class Offer {
   @PrimaryGeneratedColumn()
   id: number;
@@ -22,4 +23,7 @@ export class Offer {
 
   @Column()
   enabled: boolean;
+
+  @ManyToOne(() => Course, (course) => course.offer)
+  course: Course;
 }

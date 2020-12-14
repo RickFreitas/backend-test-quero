@@ -1,8 +1,15 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { University } from './university.entity';
 import { Campus } from './campus.entity';
+import { Offer } from './offer.entity';
 
-@Entity({ name: 'courses' })
+@Entity()
 export class Course {
   @PrimaryGeneratedColumn()
   id: number;
@@ -24,4 +31,7 @@ export class Course {
 
   @ManyToOne(() => Campus, (campus) => campus.course)
   campus: Campus;
+
+  @OneToMany(() => Offer, (offer) => offer.course)
+  offer: Offer[];
 }

@@ -1,10 +1,16 @@
 {
-    "type": "mysql",
+    "type": "postgres",
     "host": "localhost",
-    "port": 3306,
-    "username": "root",
-    "password": "root",
-    "database": "test",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "course_api",
     "entities": ["dist/**/*.entity{.ts,.js}"],
-    "synchronize": true
+    "synchronize": false,
+    "migrationsTableName": "migrations_typeorm",
+    "migrations": ["src/migrations/*{.ts,.js}"],
+    "cli": {
+      "migrationsDir": "src/migrations"
+    },
+    "migrationsRun": false
   }
